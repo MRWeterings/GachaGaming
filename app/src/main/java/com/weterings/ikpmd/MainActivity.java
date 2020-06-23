@@ -21,8 +21,16 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("message");
         myRef.setValue("Eat shit");
 
-        Button button = (Button) findViewById(R.id.gachaButton);
-        button.setOnClickListener( new View.OnClickListener(){
+        Button summonbutton = (Button) findViewById(R.id.summonButton);
+        summonbutton.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Log.d("Gacha time", "Start SummonActivity");
+                startActivity(new Intent(MainActivity.this, SummonActivity.class));
+            }
+        });
+        Button collectionbutton = (Button) findViewById(R.id.collectionButton);
+        collectionbutton.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Log.d("Gacha time", "Start SummonActivity");
