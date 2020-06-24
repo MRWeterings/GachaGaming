@@ -3,10 +3,10 @@ package com.weterings.ikpmd.database;
 public class LocalDbValues {
 
         public class ScoreMultiplierTable {
-            public static final String MODIFIERTABLE = "ModifierTable";
+            public static final String MULTIPLIERTABLE = "MultiplierTable";
         }
 
-        public class ScoreModifierColumn {
+        public class ScoreMultiplierColumn {
             public static final String MULTIPLIER1 = "multiplier1";
             public static final String MULTIPLIER2 = "multiplier2";
             public static final String MULTIPLIER3 = "multiplier3";
@@ -20,7 +20,7 @@ public class LocalDbValues {
 
         public class TotalScoreColumn {
             public static final String SCORE = "score";
-            public static final String COINS = "coins";
+            public static final String SHEKELS = "shekels";
         }
 
 
