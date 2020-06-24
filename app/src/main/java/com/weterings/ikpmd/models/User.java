@@ -1,4 +1,4 @@
-package com.hsleiden.ipkmd.models;
+package com.weterings.ikpmd.models;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -40,9 +40,7 @@ public class User {
         return score;
     }
 
-    public double getGold() {
-        return shekels;
-    }
+    public double getShekels() { return shekels; }
 
     public int getMultiplier1() {
         return multiplier1;

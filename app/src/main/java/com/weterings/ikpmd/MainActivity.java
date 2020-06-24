@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 thread1.start();
                 thread2.start();
             } else {
-                String txt = "ERROR MainActivity l151";
+                String txt = "Main Regel 152";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(getApplicationContext(),txt,duration);
                 toast.show();
@@ -160,6 +162,10 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(),txt,duration);
             toast.show();
         }
+    }
+    public void Load(View view) {
+        Intent intent = new Intent(this, LoadFirebaseActivity.class);
+        startActivity(intent);
     }
 
 }

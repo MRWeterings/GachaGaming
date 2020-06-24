@@ -10,8 +10,8 @@
     <string name="multiplier2">Multiplier 2</string>
     <string name="multiplier3">Multiplier 3</string>
     <string name="multiplier4">Multiplier 4</string>
-    <string name="SaveID">Save ID</string>
-    <string name="Password">Password</string>
+    <string name="EditSaveID">Save ID</string>
+    <string name="EditPass">Password</string>
     <string name="save_text">Save your progress to the firebase database.\nEnter an unique SaveId and a Password!</string>
     <string name="load_text">Load your progress from the firebase database.\nEnter a SaveId and a Password to download a save file!</string>
 

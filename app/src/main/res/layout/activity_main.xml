@@ -99,6 +99,7 @@
         android:background="@drawable/shekelbutton"
         android:layout_width="170dp"
         android:layout_height="40dp"
+        android:onClick="Load"
         android:text="@string/load_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

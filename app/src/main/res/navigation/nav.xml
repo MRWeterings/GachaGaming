@@ -22,6 +22,6 @@
         tools:layout="@layout/activity_collection" />
     <activity
         android:id="@+id/summonActivity"
-        android:name="com.weterings.ikpmd.SummonActivity"
+        android:name="com.weterings.ikpmd.LoadFirebaseActivity"
         android:label="SummonActivity" />
 </navigation>

@@ -16,28 +16,28 @@ public class Multipliers {
         this.multiplier1 = multiplier1;
     }
 
-    public void setMultiplier2(String multiplier2) {
-        this.multiplier2 = multiplier2;
-    }
-
-    public void setMultiplier3(String multiplier3) {
-        this.multiplier3 = multiplier3;
-    }
-
-    public void setMultiplier4(String multiplier4) {
-        this.multiplier4 = multiplier4;
-    }
-
     public String getModifier1() {
         return multiplier1;
+    }
+
+    public void setMultiplier2(String multiplier2) {
+        this.multiplier2 = multiplier2;
     }
 
     public String getMultiplier2() {
         return multiplier2;
     }
 
+    public void setMultiplier3(String multiplier3) {
+        this.multiplier3 = multiplier3;
+    }
+
     public String getMultiplier3() {
         return multiplier3;
+    }
+
+    public void setMultiplier4(String multiplier4) {
+        this.multiplier4 = multiplier4;
     }
 
     public String getMultiplier4() {
