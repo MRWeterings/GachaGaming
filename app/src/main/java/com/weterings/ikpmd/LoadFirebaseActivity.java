@@ -32,7 +32,7 @@ public class LoadFirebaseActivity extends AppCompatActivity {
     }
 
     public void getUserData(View view){
-        EditText saveId =findViewById(R.id.editUserId);
+        EditText saveId =findViewById(R.id.editGameIdSave);
         editPass =findViewById(R.id.editPassword);
 
         String path = "users/" + saveId.getText();

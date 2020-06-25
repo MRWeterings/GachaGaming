@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                                     cursor1.moveToFirst();
                                     cursor2.moveToFirst();
                                     score = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("score")));
-                                    shekels = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("gold")));
+                                    shekels = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekel")));
                                     shekelMultiplier1 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("modifier1")));
                                     shekelMultiplier2 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("modifier2")));
                                     shekelMultiplier3 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("modifier3")));
@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
                                     localActivity.runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            ScoreView.setText("Score: " + (double) Math.round(score * 100) / 100);
-                                            ShekelsView.setText("Gold: " + (double) Math.round(shekels * 100) / 100);
+                                            ScoreView.setText("Total score: " + (double) Math.round(score * 100) / 100);
+                                            ShekelsView.setText("Shekels: " + (double) Math.round(shekels * 100) / 100);
                                             ShekelSecondView.setText("Shekels per Second: " + (double) Math.round((shekelMultiplier1 * .05) * (1 + shekelMultiplier2 * .15) * (1 + shekelMultiplier3 * .2) * (1 + shekelMultiplier4 * .3) * 100) / 100);
                                             ShekelClickView.setText("Shekels per Click: " + (double) Math.round((1 + shekelMultiplier1 * .05) * (1 + shekelMultiplier2 * .15) * (1 + shekelMultiplier3 * .2) * (1 + shekelMultiplier4 * .3) * 100) / 100);
                                         }
@@ -167,5 +167,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoadFirebaseActivity.class);
         startActivity(intent);
     }
+    public void Shop(View view) {
+        Intent intent = new Intent(this, ShopActivity.class);
+        startActivity(intent);
+    }
+    public void Save(View view) {
+        Intent intent = new Intent(this, SaveFirebaseActivity.class);
+        startActivity(intent);
+    }
+
 
 }

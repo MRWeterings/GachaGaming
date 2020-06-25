@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Ikpmd</string>
+    <string name="app_name">Shekel store</string>
     <string name="summon">Summon</string>
     <string name="back_button">Back</string>
     <string name="save_button">Save</string>
     <string name="load_button">Load</string>
-    <string name="store_button">Gacha</string>
+    <string name="shop_button">Shop</string>
     <string name="click_button">Click me!</string>
     <string name="multiplier1">Multiplier 1</string>
     <string name="multiplier2">Multiplier 2</string>

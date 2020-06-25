@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Collection" />
+        <activity android:name=".SaveFirebaseActivity" />
         <activity android:name=".LoadFirebaseActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
