@@ -1,6 +1,5 @@
 package com.weterings.ikpmd;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -22,17 +21,16 @@ public class ShopActivity extends AppCompatActivity {
     private int multiplier3;
     private int multiplier4;
     private boolean run = true;
-    Activity activity;
+    Activity localActivity;
     TextView ShekelView;
 
     private LocalDbHelper localDbHelper = null;
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
-        activity = this;
+        localActivity = this;
         try {
             localDbHelper = LocalDbHelper.getDbHelper(this);
             Cursor cursor1 = localDbHelper.query(LocalDbValues.TotalScoreTables.SCORETABLE, new String[]{"*"});
@@ -76,7 +74,7 @@ public class ShopActivity extends AppCompatActivity {
                                 Cursor cursor1 = localDbHelper.query(LocalDbValues.TotalScoreTables.SCORETABLE, new String[]{"*"});
                                 cursor1.moveToFirst();
                                 shekel = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekel")));
-                                activity.runOnUiThread(new Runnable() {
+                                localActivity.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         ShekelView.setText("Shekels: " + (double) Math.round(shekel * 100) / 100);
@@ -113,7 +111,6 @@ public class ShopActivity extends AppCompatActivity {
         finish();
     }
 
-    @SuppressLint("SetTextI18n")
     public void multiplier1(View view) {
         if (shekel >= ((1 + multiplier1) * .4) * 50) {
             removeShekels(((1 + multiplier1) * .4) * 50);
@@ -142,7 +139,6 @@ public class ShopActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     public void multiplier2(View view) {
         if (shekel >= ((1 + multiplier2) * .4) * 100) {
             removeShekels(((1 + multiplier2) * .4) * 100);
@@ -171,7 +167,6 @@ public class ShopActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     public void multiplier3(View view) {
         if (shekel >= ((1 + multiplier3) * .4) * 200) {
             removeShekels(((1 + multiplier3) * .4) * 200);
@@ -200,7 +195,6 @@ public class ShopActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     public void multiplier4(View view) {
         if (shekel >= ((1 + multiplier4) * .4) * 400) {
             removeShekels(((1 + multiplier4) * .4) * 400);
@@ -247,7 +241,6 @@ public class ShopActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     public void removeShekels(double amount) {
         TextView shekelText = findViewById(R.id.shekel);
         shekelText.setText("Shekels: " + (double) Math.round(shekel * 100) / 100);

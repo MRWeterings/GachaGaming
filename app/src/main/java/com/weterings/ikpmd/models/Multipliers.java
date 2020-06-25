@@ -6,17 +6,17 @@ public class Multipliers {
         private String multiplier3;
         private String multiplier4;
 
-        public Multipliers(String modifier1, String multiplier2, String multiplier3, String multiplier4){
-            this.multiplier1 = modifier1;
+        public Multipliers(String multiplier1, String multiplier2, String multiplier3, String multiplier4){
+            this.multiplier1 = multiplier1;
             this.multiplier2 = multiplier2;
             this.multiplier3 = multiplier3;
             this.multiplier4 = multiplier4;
         }
-    public void setMultiplier1(String modifier1) {
+    public void setMultiplier1(String multiplier1) {
         this.multiplier1 = multiplier1;
     }
 
-    public String getModifier1() {
+    public String getMultiplier1() {
         return multiplier1;
     }
 

@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     TextView ShekelClickView;
     TextView ShekelSecondView;
     private LocalDbHelper localDbHelper = null;
+    Button button_shop;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         localActivity = this;
+        button_shop = (Button) findViewById(R.id.shopButton);
+        SetShopListener();
         try{
             localDbHelper.getDbHelper(this);
             Cursor cursor1 = localDbHelper.query(LocalDbValues.TotalScoreTables.SCORETABLE, new String[]{"*"});
@@ -79,10 +83,10 @@ public class MainActivity extends AppCompatActivity {
                                     cursor2.moveToFirst();
                                     score = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("score")));
                                     shekels = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekel")));
-                                    shekelMultiplier1 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("modifier1")));
-                                    shekelMultiplier2 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("modifier2")));
-                                    shekelMultiplier3 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("modifier3")));
-                                    shekelMultiplier4 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("modifier4")));
+                                    shekelMultiplier1 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier1")));
+                                    shekelMultiplier2 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier2")));
+                                    shekelMultiplier3 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier3")));
+                                    shekelMultiplier4 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier4")));
                                     localActivity.runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
@@ -167,14 +171,22 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoadFirebaseActivity.class);
         startActivity(intent);
     }
-    public void Shop(View view) {
-        Intent intent = new Intent(this, ShopActivity.class);
-        startActivity(intent);
+    public void SetShopListener() {
+//        Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+//        startActivity(intent);
+        button_shop.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     public void Save(View view) {
         Intent intent = new Intent(this, SaveFirebaseActivity.class);
         startActivity(intent);
     }
+
 
 
 }
