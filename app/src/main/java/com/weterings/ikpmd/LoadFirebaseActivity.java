@@ -34,7 +34,7 @@ public class LoadFirebaseActivity extends AppCompatActivity {
     public void getUserData(View view){
         EditText saveId =findViewById(R.id.editGameIdSave);
         editPass =findViewById(R.id.editPassword);
-
+        localDbHelper = LocalDbHelper.getDbHelper(this);
         String path = "users/" + saveId.getText();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(path);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {

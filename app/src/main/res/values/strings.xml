@@ -12,7 +12,7 @@
     <string name="multiplier4">Multiplier 4</string>
     <string name="EditSaveID">Save ID</string>
     <string name="EditPass">Password</string>
-    <string name="save_text">Save your progress to the firebase database.\nEnter an unique SaveId and a Password!</string>
-    <string name="load_text">Load your progress from the firebase database.\nEnter a SaveId and a Password to download a save file!</string>
+    <string name="save_text">Save your progress to the firebase database.\nEnter an unique id for your save and a password to go along with it!</string>
+    <string name="load_text">Load your progress from the firebase database.\nEnter the id of your save and the corresponding assword to download a save file!</string>
 
 </resources>
