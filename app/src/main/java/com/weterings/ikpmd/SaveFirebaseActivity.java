@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -50,8 +51,9 @@ public class SaveFirebaseActivity extends AppCompatActivity {
                         Cursor cursor2 = localDbHelper.query(LocalDbValues.ScoreMultiplierTable.MULTIPLIERTABLE, new String[]{"*"});
                         cursor1.moveToFirst();
                         cursor2.moveToFirst();
+                        Log.d("id:", String.valueOf(editSave));
                         User newUser = new User(
-                                userId,
+                                String.valueOf(editSave.getText()),
                                 String.valueOf(editPass.getText()),
                                 Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekels"))),
                                 Double.valueOf(cursor1.getString(cursor1.getColumnIndex("score"))),

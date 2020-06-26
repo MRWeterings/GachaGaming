@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoadFirebaseActivity">
+
     <EditText
         android:id="@+id/editUserIdLoad"
+        style="@style/Base.Widget.MaterialComponents.TextInputEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -83,19 +85,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.46" />
 
-    <EditText
-        android:id="@+id/editPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -108,13 +97,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1" />
 
-    <EditText
-        android:id="@+id/SaveIdHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Save ID:"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="230dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

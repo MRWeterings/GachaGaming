@@ -97,10 +97,7 @@ public class MainActivity extends AppCompatActivity {
                                     });
                                     Thread.sleep(250);
                                 } catch (Exception e) {
-                                    String txt = "Main regel 94";
-                                    int duration = Toast.LENGTH_SHORT;
-                                    Toast toast = Toast.makeText(getApplicationContext(), txt, duration);
-                                    toast.show();
+
                                 }
                             }
                         } catch (Exception e) {

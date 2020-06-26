@@ -56,18 +56,18 @@
 
     <ImageButton
         android:id="@+id/button1"
-        android:layout_width="195dp"
-        android:layout_height="195dp"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
         android:background="@drawable/shekelbutton"
+        android:onClick="ClickerHandler"
         android:padding="10dp"
         android:text="shekel"
-        android:onClick="ClickerHandler"
-        app:srcCompat="@drawable/skullcoin"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/skullcoin" />
 
     <Button
         android:id="@+id/shopButton"
@@ -78,10 +78,10 @@
         android:text="@string/shop_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.90" />
+        app:layout_constraintVertical_bias="0.87" />
 
     <Button
         android:id="@+id/saveButton"
