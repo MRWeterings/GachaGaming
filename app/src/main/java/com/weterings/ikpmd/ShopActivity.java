@@ -33,12 +33,13 @@ public class ShopActivity extends AppCompatActivity {
         localActivity = this;
         try {
             localDbHelper = LocalDbHelper.getDbHelper(this);
-            Cursor cursor1 = localDbHelper.query(LocalDbValues.TotalScoreTables.SCORETABLE, new String[]{"*"});
+            Cursor cursor1 = localDbHelper.query(LocalDbValues.ScoreTables.SCORETABLE, new String[]{"*"});
             Cursor cursor2 = localDbHelper.query(LocalDbValues.ScoreMultiplierTable.MULTIPLIERTABLE, new String[]{"*"});
+            cursor1.moveToFirst();
+            cursor2.moveToFirst();
             if (cursor1.getCount() > 0 || cursor2.getCount() > 0) {
-                cursor1.moveToFirst();
-                cursor2.moveToFirst();
-                shekel = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekel")));
+
+                shekel = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekels")));
                 multiplier1 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier1")));
                 multiplier2 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier2")));
                 multiplier3 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier3")));
@@ -71,9 +72,9 @@ public class ShopActivity extends AppCompatActivity {
                     public void run() {
                         try {
                             while (run = true) {
-                                Cursor cursor1 = localDbHelper.query(LocalDbValues.TotalScoreTables.SCORETABLE, new String[]{"*"});
+                                Cursor cursor1 = localDbHelper.query(LocalDbValues.ScoreTables.SCORETABLE, new String[]{"*"});
                                 cursor1.moveToFirst();
-                                shekel = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekel")));
+                                shekel = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekels")));
                                 localActivity.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -83,10 +84,7 @@ public class ShopActivity extends AppCompatActivity {
                                 Thread.sleep(250);
                             }
                         } catch (Exception e) {
-                            String txt = "Shop regel 90";
-                            int duration = Toast.LENGTH_SHORT;
-                            Toast toast = Toast.makeText(getApplicationContext(),txt,duration);
-                            toast.show();
+                            e.printStackTrace();
                         }
                     }
                 };
@@ -99,6 +97,7 @@ public class ShopActivity extends AppCompatActivity {
                 toast.show();
             }
         } catch (Exception e) {
+            e.printStackTrace();
             String txt = "Shop regel 104";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(getApplicationContext(),txt,duration);
@@ -247,11 +246,11 @@ public class ShopActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         String selection = "_id = ?";
         String[] selectionArgs = {"1"};
-        values.put(LocalDbValues.TotalScoreColumn.SHEKELS, String.valueOf(shekel - amount));
+        values.put(LocalDbValues.ScoreColumn.SHEKELS, String.valueOf(shekel - amount));
         try {
-            localDbHelper.updateTable(LocalDbValues.TotalScoreTables.SCORETABLE, values, selection, selectionArgs);
+            localDbHelper.updateTable(LocalDbValues.ScoreTables.SCORETABLE, values, selection, selectionArgs);
         } catch (Exception e) {
-            String txt = "ERROR StoreActivity l277";
+            String txt = "ERROR StoreActivity l253";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(getApplicationContext(),txt,duration);
             toast.show();

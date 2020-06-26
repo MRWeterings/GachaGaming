@@ -10,8 +10,8 @@ import android.provider.BaseColumns;
 public class LocalDbHelper extends SQLiteOpenHelper {
     private static SQLiteDatabase localSqlDb;
     private static LocalDbHelper ldbHelper;
-    private static final String localDbName = "cookieclicker.db";
-    private static final int localDbVersion = 1;
+    private static final String localDbName = "ikpmdShekels";
+    private static final int localDbVersion = 2;
 
     private LocalDbHelper(Context context){
         super(context, localDbName, null, localDbVersion);
@@ -27,21 +27,23 @@ public class LocalDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + LocalDbValues.TotalScoreTables.SCORETABLE + " (" +
-                BaseColumns._ID + "INTEGER PRIMARY KEY AUTOINCREMENT," +
-                LocalDbValues.TotalScoreColumn.SHEKELS + "TEXT);"
-
-
-        );
+        try{
         db.execSQL("CREATE TABLE " + LocalDbValues.ScoreMultiplierTable.MULTIPLIERTABLE + " (" +
-                        BaseColumns._ID + "INTEGER PRIMARY KEY AUTOINCREMENT," +
-                LocalDbValues.ScoreMultiplierColumn.MULTIPLIER1 + "TEXT," +
-                LocalDbValues.ScoreMultiplierColumn.MULTIPLIER2 + "TEXT," +
-                LocalDbValues.ScoreMultiplierColumn.MULTIPLIER3 + "TEXT," +
-                LocalDbValues.ScoreMultiplierColumn.MULTIPLIER4 + "TEXT);"
+                        BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                LocalDbValues.ScoreMultiplierColumn.MULTIPLIER1 + " TEXT," +
+                LocalDbValues.ScoreMultiplierColumn.MULTIPLIER2 + " TEXT," +
+                LocalDbValues.ScoreMultiplierColumn.MULTIPLIER3 + " TEXT," +
+                LocalDbValues.ScoreMultiplierColumn.MULTIPLIER4 + " TEXT);"
                 );
 
-    }
+        db.execSQL("CREATE TABLE " + LocalDbValues.ScoreTables.SCORETABLE + " (" +
+                BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                LocalDbValues.ScoreColumn.SCORE + " TEXT," +
+                LocalDbValues.ScoreColumn.SHEKELS + " TEXT);"
+        );
+    }catch(Exception e){
+          e.printStackTrace();
+        }}
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

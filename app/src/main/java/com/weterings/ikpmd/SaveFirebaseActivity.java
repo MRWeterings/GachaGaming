@@ -27,6 +27,10 @@ public class SaveFirebaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save);
     }
+    public void backButton(View view) {
+        finish();
+    }
+
     public void postUserSave(View view) {
         editSave = findViewById(R.id.editGameIdSave);
         editPass = findViewById(R.id.editPassword);
@@ -41,7 +45,7 @@ public class SaveFirebaseActivity extends AppCompatActivity {
                     if (user == null) {
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
                         String userId = String.valueOf(editSave.getText());
-                        Cursor cursor1 = localDbHelper.query(LocalDbValues.TotalScoreTables.SCORETABLE, new String[]{"*"});
+                        Cursor cursor1 = localDbHelper.query(LocalDbValues.ScoreTables.SCORETABLE, new String[]{"*"});
                         Cursor cursor2 = localDbHelper.query(LocalDbValues.ScoreMultiplierTable.MULTIPLIERTABLE, new String[]{"*"});
                         cursor1.moveToFirst();
                         cursor2.moveToFirst();
@@ -67,7 +71,8 @@ public class SaveFirebaseActivity extends AppCompatActivity {
                         toast.show();
                     }
                 } catch (Exception e) {
-                    String notfound = "Couldn't saveguard your shekels";
+                    e.printStackTrace();
+                    String notfound = "Couldn't safeguard your shekels";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(getApplicationContext(),notfound,duration);
                     toast.show();

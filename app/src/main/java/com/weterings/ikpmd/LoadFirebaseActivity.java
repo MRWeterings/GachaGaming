@@ -98,10 +98,10 @@ public class LoadFirebaseActivity extends AppCompatActivity {
                 String selection = "_id = ?";
                 String[] selectionArgs = {"1"};
                 ContentValues values = new ContentValues();
-                values.put(LocalDbValues.TotalScoreColumn.SCORE, String.valueOf(user.getScore()));
-                values.put(LocalDbValues.TotalScoreColumn.SHEKELS, String.valueOf(user.getShekels()));
+                values.put(LocalDbValues.ScoreColumn.SCORE, String.valueOf(user.getScore()));
+                values.put(LocalDbValues.ScoreColumn.SHEKELS, String.valueOf(user.getShekels()));
                 try {
-                    localDbHelper.updateTable(LocalDbValues.TotalScoreTables.SCORETABLE, values, selection, selectionArgs);
+                    localDbHelper.updateTable(LocalDbValues.ScoreTables.SCORETABLE, values, selection, selectionArgs);
                 } catch (Exception e) {
                     String txt = "Load updateScore";
                     int duration = Toast.LENGTH_SHORT;

@@ -3,14 +3,15 @@ package com.weterings.ikpmd;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     TextView ShekelClickView;
     TextView ShekelSecondView;
     private LocalDbHelper localDbHelper = null;
-    Button button_shop;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -40,18 +40,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         localActivity = this;
-        button_shop = (Button) findViewById(R.id.shopButton);
-        SetShopListener();
         try{
-            localDbHelper.getDbHelper(this);
-            Cursor cursor1 = localDbHelper.query(LocalDbValues.TotalScoreTables.SCORETABLE, new String[]{"*"});
+            localDbHelper = LocalDbHelper.getDbHelper(this);
+            Cursor cursor1 = localDbHelper.query(LocalDbValues.ScoreTables.SCORETABLE, new String[]{"*"});
             Cursor cursor2 = localDbHelper.query(LocalDbValues.ScoreMultiplierTable.MULTIPLIERTABLE, new String[]{"*"});
             if(!(cursor1.getCount() > 0)) {
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(LocalDbValues.TotalScoreColumn.SHEKELS, 0);
-                contentValues.put(LocalDbValues.TotalScoreColumn.SCORE, 0);
-                localDbHelper.insertIntoTable(LocalDbValues.TotalScoreTables.SCORETABLE, null, contentValues);
-                cursor1 =localDbHelper.query(LocalDbValues.TotalScoreTables.SCORETABLE, new String[]{"*"});
+                ContentValues scoreValues = new ContentValues();
+                scoreValues.put(LocalDbValues.ScoreColumn.SHEKELS, 0);
+                scoreValues.put(LocalDbValues.ScoreColumn.SCORE, 0);
+                localDbHelper.insertIntoTable(LocalDbValues.ScoreTables.SCORETABLE,    null, scoreValues);
+                cursor1 =localDbHelper.query(LocalDbValues.ScoreTables.SCORETABLE, new String[]{"*"});
+                Log.e("whore", String.valueOf(cursor1.getCount()));
             }
             if(!(cursor2.getCount() > 0)) {
                 ContentValues contentValues = new ContentValues();
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 cursor1.moveToFirst();
                 score = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("score")));
                 ScoreView = findViewById(R.id.score);
-                ScoreView.setText("Score: " + score);
+                ScoreView.setText("Total score: " + score);
                 ShekelsView = findViewById(R.id.shekel);
                 ShekelClickView = findViewById(R.id.shekelClick);
                 ShekelSecondView = findViewById(R.id.shekelSecond);
@@ -77,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             while (run = true) {
                                 try {
-                                    Cursor cursor1 = localDbHelper.query(LocalDbValues.TotalScoreTables.SCORETABLE, new String[]{"*"});
+                                    Cursor cursor1 = localDbHelper.query(LocalDbValues.ScoreTables.SCORETABLE, new String[]{"*"});
                                     Cursor cursor2 = localDbHelper.query(LocalDbValues.ScoreMultiplierTable.MULTIPLIERTABLE, new String[]{"*"});
                                     cursor1.moveToFirst();
                                     cursor2.moveToFirst();
                                     score = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("score")));
-                                    shekels = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekel")));
+                                    shekels = Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekels")));
                                     shekelMultiplier1 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier1")));
                                     shekelMultiplier2 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier2")));
                                     shekelMultiplier3 = Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier3")));
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                                             ShekelClickView.setText("Shekels per Click: " + (double) Math.round((1 + shekelMultiplier1 * .05) * (1 + shekelMultiplier2 * .15) * (1 + shekelMultiplier3 * .2) * (1 + shekelMultiplier4 * .3) * 100) / 100);
                                         }
                                     });
-                                    Thread.sleep(100);
+                                    Thread.sleep(250);
                                 } catch (Exception e) {
                                     String txt = "Main regel 94";
                                     int duration = Toast.LENGTH_SHORT;
@@ -105,10 +104,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         } catch (Exception e) {
-                            String txt = "Main regel 102";
-                            int duration = Toast.LENGTH_SHORT;
-                            Toast toast = Toast.makeText(getApplicationContext(), txt, duration);
-                            toast.show();
+                            e.printStackTrace();
                         }
                     }
                 };
@@ -124,10 +120,10 @@ public class MainActivity extends AppCompatActivity {
                                     String selection = "_id = ?";
                                     String[] selectionArgs = {"1"};
                                     ContentValues values = new ContentValues();
-                                    values.put(LocalDbValues.TotalScoreColumn.SCORE, String.valueOf(score));
-                                    values.put(LocalDbValues.TotalScoreColumn.SHEKELS, String.valueOf(shekels));
+                                    values.put(LocalDbValues.ScoreColumn.SCORE, String.valueOf(score));
+                                    values.put(LocalDbValues.ScoreColumn.SHEKELS, String.valueOf(shekels));
                                     try {
-                                        localDbHelper.updateTable(LocalDbValues.TotalScoreTables.SCORETABLE, values, selection, selectionArgs);
+                                        localDbHelper.updateTable(LocalDbValues.ScoreTables.SCORETABLE, values, selection, selectionArgs);
                                     } catch (Exception e) {
                                         String txt = "ERROR MainActivity l125";
                                         int duration = Toast.LENGTH_SHORT;
@@ -161,27 +157,47 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
             }
         } catch (Exception e) {
+            Log.d("stacktrace 158:", e.toString());
             String txt = "Main Regel 158";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(getApplicationContext(),txt,duration);
             toast.show();
         }
     }
+    @SuppressLint("SetTextI18n")
+    public void ClickerHandler(View view) {
+        ContentValues values = new ContentValues();
+        String selection = "_id = ?";
+        String[] selectionArgs = {"1"};
+        double addition = (1 + (shekelMultiplier1 * .05)) * (1 + shekelMultiplier2 * .15) * (1 + shekelMultiplier3 * .2) * (1 + shekelMultiplier4 * .3);
+        score += addition;
+        shekels += addition;
+        values.put(LocalDbValues.ScoreColumn.SCORE, String.valueOf(score));
+        values.put(LocalDbValues.ScoreColumn.SHEKELS, String.valueOf(shekels));
+        try {
+            localDbHelper.updateTable(LocalDbValues.ScoreTables.SCORETABLE, values, selection, selectionArgs);
+        } catch (Exception e) {
+            Log.d("stacktrace:", e.toString());
+            String txt = "ERROR MainActivity l177";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(getApplicationContext(),txt,duration);
+            toast.show();
+        }
+        TextView scoreView = findViewById(R.id.score);
+        scoreView.setText("Total score: " + (double) Math.round(score * 100) / 100);
+        TextView shekelsView = findViewById(R.id.shekel);
+        shekelsView.setText("Shekels: " + (double) Math.round(shekels * 100) / 100);
+    }
+
     public void Load(View view) {
         Intent intent = new Intent(this, LoadFirebaseActivity.class);
         startActivity(intent);
     }
-    public void SetShopListener() {
-//        Intent intent = new Intent(MainActivity.this, ShopActivity.class);
-//        startActivity(intent);
-        button_shop.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ShopActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+    public void Shop(View view) {
+        Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+        startActivity(intent);
+
+        }
     public void Save(View view) {
         Intent intent = new Intent(this, SaveFirebaseActivity.class);
         startActivity(intent);

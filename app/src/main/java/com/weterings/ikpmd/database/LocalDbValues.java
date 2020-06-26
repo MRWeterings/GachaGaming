@@ -14,14 +14,15 @@ public class LocalDbValues {
         }
 
 
-        public class TotalScoreTables {
+        public class ScoreTables {
             public static final String SCORETABLE = "ScoreTable";
         }
 
-        public class TotalScoreColumn {
+        public class ScoreColumn {
             public static final String SCORE = "score";
             public static final String SHEKELS = "shekels";
         }
+
 
 
 
