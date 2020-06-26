@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shekel store</string>
+    <string name="app_name">Shekel clicker</string>
     <string name="summon">Summon</string>
     <string name="back_button">Back</string>
     <string name="save_button">Save</string>
@@ -13,6 +13,6 @@
     <string name="EditSaveID">Save ID</string>
     <string name="EditPass">Password</string>
     <string name="save_text">Save your progress to the firebase database.\nEnter a unique id for your save and a password to go along with it!</string>
-    <string name="load_text">Load your progress from the firebase database.\nEnter the id of your save and the corresponding assword to download a save file!</string>
+    <string name="load_text">Load your progress from the firebase database.\nEnter the id of your save and the corresponding password to download a save file!</string>
 
 </resources>

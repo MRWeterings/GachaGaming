@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SaveFirebaseActivity" />
         <activity android:name=".LoadFirebaseActivity" />
-        <activity android:name=".ShopActivity"/>
+        <activity android:name=".ShopActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
