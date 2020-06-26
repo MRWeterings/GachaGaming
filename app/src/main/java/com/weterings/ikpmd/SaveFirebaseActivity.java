@@ -34,6 +34,7 @@ public class SaveFirebaseActivity extends AppCompatActivity {
     public void postUserSave(View view) {
         editSave = findViewById(R.id.editGameIdSave);
         editPass = findViewById(R.id.editPassword);
+        localDbHelper = LocalDbHelper.getDbHelper(this);
 
         String path = "users/" + editSave.getText();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(path);
@@ -52,8 +53,8 @@ public class SaveFirebaseActivity extends AppCompatActivity {
                         User newUser = new User(
                                 userId,
                                 String.valueOf(editPass.getText()),
-                                Double.valueOf(cursor1.getString(cursor1.getColumnIndex("score"))),
                                 Double.valueOf(cursor1.getString(cursor1.getColumnIndex("shekels"))),
+                                Double.valueOf(cursor1.getString(cursor1.getColumnIndex("score"))),
                                 Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier1"))),
                                 Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier2"))),
                                 Integer.valueOf(cursor2.getString(cursor2.getColumnIndex("multiplier3"))),

@@ -111,8 +111,8 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     public void multiplier1(View view) {
-        if (shekel >= ((1 + multiplier1) * .4) * 50) {
-            removeShekels(((1 + multiplier1) * .4) * 50);
+        if (shekel >= ((1 + multiplier1) * .4) * 25) {
+            removeShekels(((1 + multiplier1) * .4) * 25);
             multiplier1 += 1;
             ContentValues values = new ContentValues();
             String selection = "_id = ?";
@@ -129,7 +129,7 @@ public class ShopActivity extends AppCompatActivity {
             TextView tvmultiplier = findViewById(R.id.multiplier1counter);
             tvmultiplier.setText(String.valueOf(multiplier1));
             Button btnmultiplier = findViewById(R.id.multiplier1);
-            btnmultiplier.setText("Cost: " + (double) Math.round(50 * ((1 + multiplier1) * .4) * 100) / 100);
+            btnmultiplier.setText("Cost: " + (double) Math.round(25 * ((1 + multiplier1) * .4) * 100) / 100);
         } else {
             String txt = "Not enough shekels!";
             int duration = Toast.LENGTH_SHORT;
@@ -139,8 +139,8 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     public void multiplier2(View view) {
-        if (shekel >= ((1 + multiplier2) * .4) * 100) {
-            removeShekels(((1 + multiplier2) * .4) * 100);
+        if (shekel >= ((1 + multiplier2) * .4) * 50) {
+            removeShekels(((1 + multiplier2) * .4) * 50);
             multiplier2 += 1;
             ContentValues values = new ContentValues();
             String selection = "_id = ?";
@@ -157,7 +157,7 @@ public class ShopActivity extends AppCompatActivity {
             TextView tvmultiplier = findViewById(R.id.multiplier2counter);
             tvmultiplier.setText(String.valueOf(multiplier2));
             Button btnmultiplier = findViewById(R.id.multiplier2);
-            btnmultiplier.setText("Cost: " + (double) Math.round(100 * ((1 + multiplier2) * .4) * 100) / 100);
+            btnmultiplier.setText("Cost: " + (double) Math.round(50 * ((1 + multiplier2) * .4) * 100) / 100);
         } else {
             String txt = "Not enough shekels!";
             int duration = Toast.LENGTH_SHORT;
@@ -167,8 +167,8 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     public void multiplier3(View view) {
-        if (shekel >= ((1 + multiplier3) * .4) * 200) {
-            removeShekels(((1 + multiplier3) * .4) * 200);
+        if (shekel >= ((1 + multiplier3) * .4) * 100) {
+            removeShekels(((1 + multiplier3) * .4) * 100);
             multiplier3 += 1;
             ContentValues values = new ContentValues();
             String selection = "_id = ?";
@@ -185,7 +185,7 @@ public class ShopActivity extends AppCompatActivity {
             TextView tvmultiplier = findViewById(R.id.multiplier3counter);
             tvmultiplier.setText(String.valueOf(multiplier3));
             Button btnmultiplier = findViewById(R.id.multiplier3);
-            btnmultiplier.setText("Cost: " + (double) Math.round(200 * ((1 + multiplier3) * .4) * 100) / 100);
+            btnmultiplier.setText("Cost: " + (double) Math.round(100 * ((1 + multiplier3) * .4) * 100) / 100);
         } else {
             String txt = "Not enough shekels!";
             int duration = Toast.LENGTH_SHORT;
@@ -195,8 +195,8 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     public void multiplier4(View view) {
-        if (shekel >= ((1 + multiplier4) * .4) * 400) {
-            removeShekels(((1 + multiplier4) * .4) * 400);
+        if (shekel >= ((1 + multiplier4) * .4) * 200) {
+            removeShekels(((1 + multiplier4) * .4) * 200);
             multiplier4 += 1;
             ContentValues values = new ContentValues();
             String selection = "_id = ?";
@@ -213,7 +213,7 @@ public class ShopActivity extends AppCompatActivity {
             TextView tvmultiplier = findViewById(R.id.multiplier4counter);
             tvmultiplier.setText(String.valueOf(multiplier4));
             Button btnmultiplier = findViewById(R.id.multiplier4);
-            btnmultiplier.setText("Cost: " + (double) Math.round(400 * ((1 + multiplier4) * .4) * 100) / 100);
+            btnmultiplier.setText("Cost: " + (double) Math.round(200 * ((1 + multiplier4) * .4) * 100) / 100);
         } else {
             String txt = "Not enough shekels!";
             int duration = Toast.LENGTH_SHORT;
